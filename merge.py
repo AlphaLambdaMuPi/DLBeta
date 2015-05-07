@@ -4,10 +4,15 @@ FILES = [
     'hw1_outb.txt',
     'hw1_pred.out',
     'submit.csv', 
+    # 'res3.out',
 
     'hw1hmm_state_good.out',
-    'hw1hmm_state_good.out',
+    'hw1hmm_state_span.out',
     'hw1hmm_state_2000.out',
+    'hw1hmm_state_013.out',
+    'hw1hmm_state_logmix3.out',
+    # 'hw1hmm_state_mix3.out',
+    # 'hw1hmm_state_logmix3.out',
 ]
 
 answer = {}
@@ -32,11 +37,11 @@ df2 = [ [0] * len(FILES) for i in range(len(FILES)) ]
 for a in answer:
     for i in range(len(answer[a])):
         max_answer[a] = max(set(answer[a]), key=answer[a].count)
-        for j in range(len(FILES)):
-            if max_answer[a] != answer[a][j]: diff[j] += 1
-            for k in range(len(FILES)):
-                if answer[a][j] != answer[a][k]:
-                    df2[j][k] += 1
+        # for j in range(len(FILES)):
+            # if max_answer[a] != answer[a][j]: diff[j] += 1
+            # for k in range(len(FILES)):
+                # if answer[a][j] != answer[a][k]:
+                    # df2[j][k] += 1
         prd[answer[a].count(max_answer[a])] += 1
         # if answer[a].count(max_answer[a]) < len(FILES) // 2:
             # max_answer[a] = 'concon'

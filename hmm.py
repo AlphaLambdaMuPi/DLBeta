@@ -69,31 +69,30 @@ def main():
     mat = mat / np.sum(mat, axis=1)[:,None]
     mat = np.log(mat) 
     reg = re.compile('(\w+)_(\d+)')
+    A = np.log(np.load('ans_hat.prob.npy'))
 
     with open('submit_prob.csv') as f, open('hw1hmm_eta.out', 'w') as fw:
+        f.readline()
         fw.write('id,prediction\n')
 
-        acc = 0
         cnt = 0
         with ProgressBar(maxval=596) as prog:
             l = f.readline()
+            pos = 0
+            acc = 1
             while l:
                 ls = l.split()
                 res = reg.search(ls[0])
                 n = name = res.group(1)
-                probs = []
                 while n == name:
-                    probs.append(np.array(list(map(float, ls[1:]))))
-                    probs[-1] *= 0.8
-                    probs[-1] += 0.2 / len(probs[-1])
+                    acc += 1
                     l = f.readline()
                     ls = l.split()
                     if not l: break
                     res = reg.search(l)
                     n = res.group(1)
-                fin = hmm(probs, mat)
-                #probs = np.asarray(probs)
-                #fin = np.argmax(probs, axis=1)
+
+                fin = hmm(A[pos:acc], mat)
                 for i in range(len(probs)):
                     fw.write('{}_{},{}\n'.format(name, i+1, mps[remps[fin[i]]]))
                 cnt += 1
