@@ -1,12 +1,19 @@
 import numpy as np
 from phomap import ph2id
-FILES = ['hw1_out.txt',
-         'hw1_outb.txt',
-         'hw1_pred.out',
-         'submit.csv', 
-         #'hw1hmm_state_logmix3.out', 
-         #'hw1hmm_state_logmix3.out', 
-         #'hw1hmm_state_logmix3.out', 
+FILES = [
+    'hw1_out.txt',
+    'hw1_outb.txt',
+    'hw1_pred.out',
+    'submit.csv', 
+    # 'res3.out',
+
+    'hw1hmm_state_good.out',
+    'hw1hmm_state_span.out',
+    'hw1hmm_state_2000.out',
+    'hw1hmm_state_013.out',
+    'hw1hmm_state_logmix3.out',
+    # 'hw1hmm_state_mix3.out',
+    # 'hw1hmm_state_logmix3.out',
          ]
 
 answer = {}
