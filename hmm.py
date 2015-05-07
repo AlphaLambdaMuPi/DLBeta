@@ -70,7 +70,7 @@ def main():
     mat = np.log(mat) 
     reg = re.compile('(\w+)_(\d+)')
 
-    with open('submit_prob.csv') as f, open('hw1hmm.out', 'w') as fw:
+    with open('submit_prob.csv') as f, open('hw1hmm_eta.out', 'w') as fw:
         fw.write('id,prediction\n')
 
         acc = 0

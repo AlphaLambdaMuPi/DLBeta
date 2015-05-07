@@ -1,9 +1,14 @@
 import numpy as np
-FILES = ['hw1_out.txt',
-         'hw1_outb.txt',
-         'hw1_pred.out',
-         'hw1hmm_state_good.out',
-         'submit.csv', ]
+FILES = [
+    'hw1_out.txt',
+    'hw1_outb.txt',
+    'hw1_pred.out',
+    'submit.csv', 
+
+    'hw1hmm_state_good.out',
+    'hw1hmm_state_good.out',
+    'hw1hmm_state_2000.out',
+]
 
 answer = {}
 
@@ -33,8 +38,8 @@ for a in answer:
                 if answer[a][j] != answer[a][k]:
                     df2[j][k] += 1
         prd[answer[a].count(max_answer[a])] += 1
-        #if answer[a].count(max_answer[a]) < len(FILES) - 1:
-            #max_answer[a] = 'concon'
+        # if answer[a].count(max_answer[a]) < len(FILES) // 2:
+            # max_answer[a] = 'concon'
 
 print(prd, diff)
 print(np.array(df2))

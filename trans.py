@@ -44,7 +44,7 @@ def answer(l):
 
 r = re.compile('(\w+)_\d+,(\w+)')
 qq = []
-with open('hw1hmm.out') as f, open('max2alpha.out', 'w') as fw:
+with open('hw1hmm_state_good.out') as f, open('hw2hmm_state_good.out', 'w') as fw:
     f.readline()
     fw.write('id,phone_sequence\n')
     l = f.readline()

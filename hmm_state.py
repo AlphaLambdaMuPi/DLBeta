@@ -80,9 +80,9 @@ def main():
     mat = mat / np.sum(mat, axis=1)[:,None]
     mat = np.log(mat) 
     reg = re.compile('(\w+)_(\d+)')
-    A = np.log(np.load('hw1_state_good.npy'))
+    A = np.log(np.load('hw1_state_1500.npy'))
 
-    with open('submit_prob.csv') as f, open('hw1hmm_state_good.out', 'w') as fw:
+    with open('submit_prob.csv') as f, open('hw1hmm_state_1500.out', 'w') as fw:
         f.readline()
         fw.write('id,prediction\n')
 
@@ -102,18 +102,22 @@ def main():
                     if not l: break
                     res = reg.search(l)
                     n = res.group(1)
-                #fin = hmm(A[pos:acc], mat)
-                #for i in range(acc-pos):
-                    #fw.write('{}_{},{}\n'.format(name, i+1, mps[fin[i]][1]))
-                #print(len(A))
+
+                # fin = hmm(A[pos:acc], mat)
+                # for i in range(acc-pos):
+                    # fw.write('{}_{},{}\n'.format(name, i+1, mps[fin[i]][1]))
+                # print(len(A))
+
                 #assert(len(agmx) == (acc-pos))
                 #probs = np.asarray(probs)
                 #fin = np.argmax(probs, axis=1)
                 #print(list(map(lambda x: mps[x][1], fin)))
                 #print(list(map(lambda x: mps[x][1], agmx)))
+
                 agmx = np.argmax(A[pos:acc], axis=1)
                 for i in range(acc-pos):
                     fw.write('{}_{},{}\n'.format(name, i+1, mps[agmx[i]][1]))
+
                 cnt += 1
                 prog.update(cnt)
                 pos = acc
